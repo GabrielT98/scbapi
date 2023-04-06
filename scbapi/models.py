@@ -69,7 +69,14 @@ class Barraginha(models.Model):
         self.tempo_concentracao = (0.87 *((self.comprimento_talvegue_principal*self.comprimento_talvegue_principal*self.comprimento_talvegue_principal) / self.declividade_trecho))
 
     def set_tempo_concentracaoo_final(self):
-        self.tempo_concentracaoo_final = self.tempo_concentracao**0.385
+        valor = self.tempo_concentracao** 0.385
+        if type(valor) == float:
+            self.tempo_concentracaoo_final = valor
+        else:
+            new_valor = float(valor.real) + float(valor.imag)
+            self.tempo_concentracaoo_final = new_valor
+
+
 
     def set_capacidade_infiltracao_a(self):
         self.capacidade_infiltracao_a = 1 + (1-1)

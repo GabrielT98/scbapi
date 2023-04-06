@@ -63,7 +63,7 @@ class BarraginhaAPIView(APIView):
         barraginha.set_area_total_infiltracao()
         barraginha.set_area_fundo_consider()
         barraginha.save()
-        return JsonResponse(status=201, data=None)
+        return JsonResponse(status=201, data=None, safe=False)
     def get(self,request,pk):
         try:
             barraguinhas = Barraginha.objects.filter(user__barraginha=int(pk))
