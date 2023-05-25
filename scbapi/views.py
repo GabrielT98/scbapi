@@ -27,6 +27,16 @@ class LoginAPIView(APIView):
         else:
             return Response({'error': 'Invalid credentials'},status=404)
 
+class CreateUserAPIView(APIView):
+    def post(self,request):
+        name = request.data.get('username')
+        password = request.data.get('password')
+        cre = request.data.get('cre')
+
+        usuario = User(name=name, password=password, numero_cre=cre)
+        usuario.save()
+        return JsonResponse(status=201, data=None, safe=False)
+
 
 class BarraginhaAPIView(APIView):
 
@@ -71,23 +81,3 @@ class BarraginhaAPIView(APIView):
             return JsonResponse(barraguinhas_json.data , safe=False)
         except:
             return JsonResponse(status=404,data=None)
-
-
-
-
-
-
-
-
-
-
-
-def create_user(request):
-    pass
-
-def create_barraginha(request):
-    pass
-
-def list_barraginha(request):
-    pass
-    
