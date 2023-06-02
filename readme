@@ -1,0 +1,13 @@
+1 - change database to 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+2 - run python manage.py makemigrations
+
+3 - run python manage.py migrate
+
+4 - run python manage.py runserver
+
